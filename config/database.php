@@ -12,7 +12,7 @@ class Database {
     public function __construct() {
         // Tomar configuración desde variables de entorno
         $this->host = getenv('DB_HOST') ?: '127.0.0.1';
-        $this->port = getenv('DB_PORT') ?: 3306;
+        $this->port = getenv('DB_PORT') ?: 3307;
         $this->db   = getenv('DB_NAME') ?: 'wms_db';
         $this->user = getenv('DB_USER') ?: 'root';
         $this->pass = getenv('DB_PASS') ?: '';
