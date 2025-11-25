@@ -1,15 +1,23 @@
 <?php
 
 class Database {
-    private $host = '127.0.0.1';
-    private $port = 3307; 
-    private $db   = "wms_db";
-    private $user = "root";
-    private $pass = "";
-    private $charset = "utf8mb4";
+    private $host;
+    private $port;
+    private $db;
+    private $user;
+    private $pass;
+    private $charset;
     public $pdo;
 
     public function __construct() {
+        // Tomar configuración desde variables de entorno
+        $this->host = getenv('DB_HOST') ?: '127.0.0.1';
+        $this->port = getenv('DB_PORT') ?: 3306;
+        $this->db   = getenv('DB_NAME') ?: 'wms_db';
+        $this->user = getenv('DB_USER') ?: 'root';
+        $this->pass = getenv('DB_PASS') ?: '';
+        $this->charset = 'utf8mb4';
+
         $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->db};charset={$this->charset}";
         $opts = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
