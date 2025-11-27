@@ -1,5 +1,10 @@
 <?php
 
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 class Database {
     private $host;
     private $port;
@@ -11,11 +16,11 @@ class Database {
 
     public function __construct() {
         // Tomar configuración desde variables de entorno
-        $this->host = getenv('DB_HOST') ?: '127.0.0.1';
-        $this->port = getenv('DB_PORT') ?: 3307;
-        $this->db   = getenv('DB_NAME') ?: 'wms_db';
-        $this->user = getenv('DB_USER') ?: 'root';
-        $this->pass = getenv('DB_PASS') ?: '';
+        $this->host = getenv('MYSQLHOST') ?: '127.0.0.1';
+        $this->port = getenv('MYSQLPORT') ?: 3306; // Cambiado a 3306 por defecto
+        $this->db   = getenv('MYSQLDATABASE') ?: 'wms_db';
+        $this->user = getenv('MYSQLUSER') ?: 'root';
+        $this->pass = getenv('MYSQLPASSWORD') ?: '';
         $this->charset = 'utf8mb4';
 
         $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->db};charset={$this->charset}";
@@ -26,7 +31,7 @@ class Database {
 
         try {
             $this->pdo = new PDO($dsn, $this->user, $this->pass, $opts);
-            // Para pruebas: descomenta la siguiente línea
+            // Para pruebas:
             // echo json_encode(["status" => "success", "message" => "DB connection OK"]);
         } catch (PDOException $e) {
             http_response_code(500);
@@ -38,3 +43,6 @@ class Database {
         }
     }
 }
+
+// Instancia la clase después de definirla
+$db = new Database();
