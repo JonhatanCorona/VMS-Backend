@@ -11,7 +11,7 @@ class Database {
 
     public function __construct() {
         // URL completa de conexión MySQL (puedes ponerla en .env o directamente aquí)
-        $url = getenv('MYSQL_URL') ?: 'mysql://root:pPswnhvHewresuurzHuyzVwIjwjrkwfi@yamabiko.proxy.rlwy.net:45964/wms_db';
+        $url = getenv('MYSQL_URL');
 
         // Parsear URL
         $parts = parse_url($url);
