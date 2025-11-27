@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS t_paquete (
 CREATE TABLE IF NOT EXISTS t_tracking (
     id INT AUTO_INCREMENT PRIMARY KEY,
     paquete_id INT NOT NULL,
-    usuario_id INT NOT NULL,
+    usuario_id INT NULL,
     fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
     tipo_movimiento VARCHAR(50),
     descripcion TEXT,
