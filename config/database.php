@@ -17,7 +17,7 @@ class Database {
     public function __construct() {
         // Tomar configuración desde variables de entorno
         $this->host = getenv('MYSQLHOST') ?: '127.0.0.1';
-        $this->port = getenv('MYSQLPORT') ?: 3306; // Cambiado a 3306 por defecto
+        $this->port = getenv('MYSQLPORT') ?: 3307; 
         $this->db   = getenv('MYSQLDATABASE') ?: 'wms_db';
         $this->user = getenv('MYSQLUSER') ?: 'root';
         $this->pass = getenv('MYSQLPASSWORD') ?: '';
