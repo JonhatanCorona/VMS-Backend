@@ -89,7 +89,7 @@ La autenticación se basa en la generación y validación de un **Token Bearer**
 
 Método: POST
 
-URL: https://vms-backend-s4sj.onrender.com/auth/login
+URL: https://vms-backend-s4sj.onrender.com/auth/login.php
 
 Headers:
 
@@ -135,7 +135,7 @@ Objetivo: Validar un token de sesión y recuperar los datos del usuario.
 
 Método: GET
 
-URL: https://vms-backend-s4sj.onrender.com/auth/me
+URL: https://vms-backend-s4sj.onrender.com/auth/me.php
 
 Headers:
 
@@ -237,15 +237,16 @@ Para correr el backend de forma local se recomienda usar **XAMPP** (Apache + MyS
 
 1. XAMPP instalado y funcionando.
 2. PHP >= 8.0.
-3. MySQL usando la URl, puede ser la base de datos de manera local o deployada en la nube.
+3. MySQL usando la URl, puede ser la base de datos de manera local o deplegada en la nube.
 4. Composer (opcional, solo si se usan dependencias adicionales).
 
 ---
 
 ### 1. Como se Configuro la Base de Datos
 
-1. Se Abrio **MySQLWoorbech** se uso la consola
-2. Se creo la base de datos `wms_db` ejecutando el script:
+1. Se hizo el despliegue una base de datos en Railway
+2. Se Abrio **MySQLWoorbech** se hace conexion a esa base de datos desplegada y se uso la consola
+3. Se creo la base de datos `wms_db` ejecutando el script:
 
 ```sql
 
@@ -254,10 +255,9 @@ Esto crea la base de datos y Ejecuta las tablas y relaciones definidas en sql/sc
 
 luego se cambio la variable de entorno, para que se conecte a la nueva base de datos se ha creado
 
-MYSQL_URL=mysql://<USUARIO>:<CONTRASEÑA>@<HOST>:<PUERTO>/<NOMBRE_BD> Cambiando <NOMBRE_BD>. 
+MYSQL_URL: mysql://root:pPswnhvHewresuurzHuyzVwIjwjrkwfi@yamabiko.proxy.rlwy.net:45964/wms_db
 
 Inserte un usuario de prueba
-[https://vms-backend-s4sj.onrender.com/utils/crear_usuario]
+[https://vms-backend-s4sj.onrender.com/utils/crear_usuario.php]
 
-Se puede insertar mas usuarios para prueba cambiando el correo en el script ya que no se pueden suplicar los correos.
-
+```
